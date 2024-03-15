@@ -1,7 +1,25 @@
-creare servizio rest che dato in input n polizza mi restituisce id anagrafiche associate alla polizza -->controller service repository
+input un numero di polizza, mi aspetto in output l' id del contraente di polizza.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 creare tabella anagrafe con id nome cognome e cf sesso -->id anagrafica = id contraente id_assicurato e beneficiario
 
 servizio rest dato in input un cf dammi tutte le polizze associate a quel cf -->output: figura sono all'interno della polizza
+input string cf
+output OutputPolizza
 
 TDD

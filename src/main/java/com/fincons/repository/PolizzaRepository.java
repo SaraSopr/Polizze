@@ -1,6 +1,7 @@
-package com.example.Polizze.repository;
+package com.fincons.repository;
 
-import com.example.Polizze.PolizzaDb;
+import com.fincons.db.entity.PolizzaDb;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.List;
@@ -36,7 +37,8 @@ public class PolizzaRepository {
                 polizza.getIdBeneficiario());
     }
 
-    public void findPolizzaByNumber(String numeroDiPolizza) {
-
+    public PolizzaDb findByNumeroPolizza(String numeroDiPolizza) {
+        return (PolizzaDb) jdbcTemplate.queryForObject("select * from polizza where NUMERO_POLIZZA = ? ",
+                new Object[]{numeroDiPolizza}, new BeanPropertyRowMapper(PolizzaDb.class));
     }
 }

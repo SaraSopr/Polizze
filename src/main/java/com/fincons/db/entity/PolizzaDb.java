@@ -1,9 +1,11 @@
-package com.example.Polizze;
+package com.fincons.db.entity;
 
 
-import lombok.Value;
+import lombok.*;
 
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PolizzaDb {
     int id;
     String numeroPolizza;

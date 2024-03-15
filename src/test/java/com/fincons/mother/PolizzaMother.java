@@ -1,6 +1,6 @@
-package com.example.Polizze.mother;
+package com.fincons.mother;
 
-import com.example.Polizze.PolizzaDb;
+import com.fincons.db.entity.PolizzaDb;
 
 public class PolizzaMother {
     public static PolizzaDb getPolizza(String number) {

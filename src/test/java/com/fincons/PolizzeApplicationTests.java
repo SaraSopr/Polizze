@@ -1,4 +1,4 @@
-package com.example.Polizze;
+package com.fincons;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
