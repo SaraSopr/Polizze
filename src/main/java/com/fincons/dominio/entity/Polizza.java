@@ -1,11 +1,18 @@
 package com.fincons.dominio.entity;
 
+import com.fincons.db.entity.AnagraficaDB;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Value;
 
 @Value
+@AllArgsConstructor
 public class Polizza {
-    private final String numeroPolizza;
-    private final int idConatraente;
-    private final int idAssicurato;
-    private final int idBeneficiario;
+    int id;
+    String numeroPolizza;
+    Anagrafica contraente;
+    Anagrafica beneficiario;
+    Anagrafica assicurato;
+
+
 }

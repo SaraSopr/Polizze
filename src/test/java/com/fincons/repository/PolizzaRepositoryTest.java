@@ -9,6 +9,7 @@ import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
@@ -18,11 +19,14 @@ class PolizzaRepositoryTest {
     @Autowired
     private PolizzaRepository polizzaRepository;
 
+    @Autowired
+    private AnagraficaRepository anagraficaRepository;
+
     @Test
     void findAll() {
-        polizzaRepository.insert(new PolizzaDb(1, "2", 2, 2, 2));
-        polizzaRepository.insert(new PolizzaDb(1, "3", 2, 2, 2));
-        polizzaRepository.insert(new PolizzaDb(1, "4", 2, 2, 2));
+        polizzaRepository.insertPolizza(new PolizzaDb(1, "2", 2, 2, 2, 0, 0));
+        polizzaRepository.insertPolizza(new PolizzaDb(2, "3", 2, 2, 2, 0, 0));
+        polizzaRepository.insertPolizza(new PolizzaDb(3, "4", 2, 2, 2, 0, 0));
         List<PolizzaDb> actual = polizzaRepository.findAll();
         assertThat(actual.size()).isEqualTo(3);
     }
@@ -30,18 +34,28 @@ class PolizzaRepositoryTest {
 
     @Test
     void insertPolizza(){
-        PolizzaDb polizza = new PolizzaDb(1, "2", 2, 2, 2);
-        polizzaRepository.insert(polizza);
+        PolizzaDb polizza = new PolizzaDb(1, "2", 2, 2, 2, 0,0);
+        polizzaRepository.insertPolizza(polizza);
         assertThat(polizzaRepository.findAll().size()).isEqualTo(1);
     }
 
     @Test
     void findPolizzaByNumber(){
-        polizzaRepository.insert(new PolizzaDb(1, "111", 222, 333, 444));
-        polizzaRepository.insert(new PolizzaDb(2, "555", 666, 777, 888));
+        polizzaRepository.insertPolizza(new PolizzaDb(1, "111", 222, 333, 444, 0, 0));
+        polizzaRepository.insertPolizza(new PolizzaDb(2, "555", 666, 777, 888, 0,0));
 
         PolizzaDb actual = polizzaRepository.findByNumeroPolizza("555");
 
-        assertThat(actual).isEqualTo(new PolizzaDb(2, "555", 666, 777, 888));
+        assertThat(actual).isEqualTo(new PolizzaDb(2, "555", 666, 777, 888, 0, 0));
+    }
+
+    @Test
+    void findPolizzeByIDContraenteOrAssicuratoOrBeneficiario(){
+        PolizzaDb polizzaDb = new PolizzaDb(1, "111", 222, 333, 444, 0, 0);
+        polizzaRepository.insertPolizza(polizzaDb);
+        polizzaRepository.insertPolizza(new PolizzaDb(2, "555", 666, 777, 888, 0, 0));
+
+        List<PolizzaDb> actual = polizzaRepository.findPolizzeByIDAnagrafica(222);
+        assertThat(actual).isEqualTo(asList(polizzaDb));
     }
 }

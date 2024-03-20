@@ -12,4 +12,6 @@ public class PolizzaDb {
     int idContraente;
     int idAssicurato;
     int idBeneficiario;
+    int idFondo;
+    int idProdotto;
 }

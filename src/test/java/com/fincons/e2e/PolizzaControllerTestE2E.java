@@ -4,17 +4,23 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fincons.PolizzeApplication;
 import com.fincons.controller.PolizzaController;
 import com.fincons.db.entity.PolizzaDb;
-import com.fincons.repository.PolizzaRepository;
+import com.fincons.io.entity.Rapporto;
+import com.fincons.persistor.AnagraficaDBPersistor;
+import com.fincons.persistor.PolizzaDBPersistor;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.List;
+
+import static com.fincons.mother.PolizzaDBMother.getPolizza;
+import static java.lang.String.valueOf;
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -29,25 +35,64 @@ public class PolizzaControllerTestE2E {
     @Autowired
     MockMvc mockMvc;
     @Autowired
-    PolizzaRepository polizzaRepository;
+    PolizzaDBPersistor polizzaPersistor;
+    @Autowired
+    AnagraficaDBPersistor anagraficaDBPersistor;
 
     @Test
     void happyPath() throws Exception {
-        polizzaRepository.insert(new PolizzaDb(1, "111", 222, 2, 2));
-        String numeroDiPolizza = "111";
+        PolizzaDb polizza = getPolizza("999");
+        polizzaPersistor.inserisciPolizze(asList(polizza));
 
-        MvcResult mvcResult = this.mockMvc.perform(get("/polizza/getContraente1/" + numeroDiPolizza))
+        MvcResult mvcResult = this.mockMvc.perform(get("/polizza/getContraente1/" + polizza.getNumeroPolizza()))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andReturn();;
+                .andReturn();
 
         ObjectMapper objectMapper = new ObjectMapper();
         PolizzaController.Pippo actual = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), PolizzaController.Pippo.class);
 
-        //assertThat(mvcResult.getResponse().getContentAsString()).isEqualTo("{\"aaa\":\"lol\",\"idContraente\":\"222\"}");
-        PolizzaController.Pippo expected = new PolizzaController.Pippo("lol","222");
+        PolizzaController.Pippo expected = new PolizzaController.Pippo("lol", valueOf(polizza.getIdContraente()));
         assertThat(actual).isEqualTo(expected);
-
     }
+
+
+
+    @Test
+    void happyPath2() throws Exception {
+        List<PolizzaDb> polizzeDiMarco = polizzaPersistor.inserisciPolizzeMarco();
+        String codiceFiscale = "marco";
+        MvcResult mvcResult = this.mockMvc.perform(get("/polizza/getPolizze/" + codiceFiscale))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<PolizzaDb> actual = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), objectMapper.getTypeFactory().constructCollectionType(List.class, PolizzaDb.class));
+
+
+        assertThat(actual).isEqualTo(polizzeDiMarco);
+    }
+
+
+    @Test
+    void happyPath3() throws Exception {
+        polizzaPersistor.inserisciPolizzeMarco();
+        List<Rapporto> listaRapportiMarco = asList(new Rapporto("1", "Marco", "Rossi", "M", "Sofia", "Gialli", "F", "Mario", "Verdi", "M"),
+        new Rapporto("2", "Marco", "Rossi", "M", "Mario", "Verdi", "M", "Sofia", "Gialli", "F"));
+
+        String codiceFiscale = "marco";
+        MvcResult mvcResult = this.mockMvc.perform(get("/polizza/getRapporti/" + codiceFiscale))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<PolizzaDb> actual = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), objectMapper.getTypeFactory().constructCollectionType(List.class, Rapporto.class));
+
+
+        assertThat(actual).isEqualTo(listaRapportiMarco);
+    }
+
 
 }
