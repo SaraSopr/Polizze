@@ -23,3 +23,17 @@ input string cf
 output OutputPolizza
 
 TDD
+
+
+/////////
+Modifica servizio getRapporti
+Il contraente può essere uno degli assicurati
+Gli assicurati sono diversi tra loro
+I beneficiari o tutti sono vita tutti sono morte, diversi tra loro e diversi dagli assicurati
+E' obbligatorio avere almeno un beneficiario
+BOOLEAN ContraenteUgualeBeneficiario = S il contraente è uguale al assicurato1 e c'è un solo assicurato e il campo assicurato1 è vuoto
+BOOLEAN ContraenteUgualeBeneficiario = N  il contraente è diverso dall'assicurato1 e assicurato2
+BOOLEAN ContraenteUgualeBeneficiario !=N/S il contraente può essere uno degli assicurati e ci sono due assicurati
+
+Servizio InserisciPoliza
+Input = inputPolizza informazioni da inserire per quella polizza -> info polizza e anagrafiche InputAnagrafica

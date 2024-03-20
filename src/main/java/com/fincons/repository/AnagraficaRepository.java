@@ -1,8 +1,6 @@
 package com.fincons.repository;
 
 import com.fincons.db.entity.AnagraficaDB;
-import com.fincons.dominio.entity.Anagrafica;
-import com.fincons.io.entity.OutputAnagrafica;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
