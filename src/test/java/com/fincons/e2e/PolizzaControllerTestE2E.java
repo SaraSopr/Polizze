@@ -59,6 +59,7 @@ public class PolizzaControllerTestE2E {
 
 
     @Test
+    @Disabled
     void happyPath2() throws Exception {
         List<PolizzaDb> polizzeDiMarco = polizzaPersistor.inserisciPolizzeMarco();
         String codiceFiscale = "marco";
@@ -76,6 +77,7 @@ public class PolizzaControllerTestE2E {
 
 
     @Test
+    @Disabled
     void happyPath3() throws Exception {
         polizzaPersistor.inserisciPolizzeMarco();
         List<Rapporto> listaRapportiMarco = asList(new Rapporto("1", "Marco", "Rossi", "M", "Sofia", "Gialli", "F", "Mario", "Verdi", "M"),

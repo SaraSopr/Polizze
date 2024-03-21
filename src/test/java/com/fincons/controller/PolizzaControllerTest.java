@@ -6,6 +6,7 @@ import com.fincons.io.entity.Rapporto;
 import com.fincons.mother.PolizzaMother;
 import com.fincons.mother.RapportoMother;
 import com.fincons.usecase.PolizzaUseCase;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

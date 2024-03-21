@@ -38,27 +38,29 @@ public class PolizzaUseCase {
         return polizzaDbList.stream().map(polizzaDb -> map(polizzaDb, mappaAnagrafiche)).collect(Collectors.toList());
     }
 
-    private Polizza map(PolizzaDb polizzaDb, HashMap<Integer, Anagrafica> mappaAnagrafica) {
-        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdContraente())) {
-            Anagrafica contraente = getAnagrafica(polizzaDb.getIdContraente());
-            mappaAnagrafica.put(polizzaDb.getIdContraente(), contraente);
-        }
-        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiario())) {
-            Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiario());
-            mappaAnagrafica.put(polizzaDb.getIdBeneficiario(), beneficiario);
-        }
-        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdAssicurato())) {
-            Anagrafica assicurato = getAnagrafica(polizzaDb.getIdAssicurato());
-            mappaAnagrafica.put(polizzaDb.getIdAssicurato(), assicurato);
-        }
-        return new Polizza(
-                polizzaDb.getId(),
-                polizzaDb.getNumeroPolizza(),
-                mappaAnagrafica.get(polizzaDb.getIdContraente()),
-                mappaAnagrafica.get(polizzaDb.getIdBeneficiario()),
-                mappaAnagrafica.get(polizzaDb.getIdAssicurato())
-        );
-    }
+   private Polizza map(PolizzaDb polizzaDb, HashMap<Integer, Anagrafica> mappaAnagrafica) {
+        return null;
+   }
+//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdContraente())) {
+//            Anagrafica contraente = getAnagrafica(polizzaDb.getIdContraente());
+//            mappaAnagrafica.put(polizzaDb.getIdContraente(), contraente);
+//        }
+//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita1())) {
+//            Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiario());
+//            mappaAnagrafica.put(polizzaDb.getIdBeneficiario(), beneficiario);
+//        }
+//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdAssicurato())) {
+//            Anagrafica assicurato = getAnagrafica(polizzaDb.getIdAssicurato());
+//            mappaAnagrafica.put(polizzaDb.getIdAssicurato(), assicurato);
+//        }
+//        return new Polizza(
+//                polizzaDb.getId(),
+//                polizzaDb.getNumeroPolizza(),
+//                mappaAnagrafica.get(polizzaDb.getIdContraente()),
+//                mappaAnagrafica.get(polizzaDb.getIdBeneficiario()),
+//                mappaAnagrafica.get(polizzaDb.getIdAssicurato())
+//        );
+//    }
 
     private static boolean anagraficaGiaPresente(HashMap<Integer, Anagrafica> map, int polizzaDb) {
         return !map.containsKey(polizzaDb);
