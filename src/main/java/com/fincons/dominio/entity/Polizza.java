@@ -11,8 +11,16 @@ public class Polizza {
     int id;
     String numeroPolizza;
     Anagrafica contraente;
-    Anagrafica beneficiario;
-    Anagrafica assicurato;
-
-
+    Anagrafica beneficiarioVita1;
+    Anagrafica beneficiarioVita2;
+    Anagrafica beneficiarioVita3;
+    Anagrafica beneficiarioVita4;
+    Anagrafica beneficiarioVita5;
+    Anagrafica beneficiarioMorte1;
+    Anagrafica beneficiarioMorte2;
+    Anagrafica beneficiarioMorte3;
+    Anagrafica beneficiarioMorte4;
+    Anagrafica beneficiarioMorte5;
+    Anagrafica assicurato1;
+    Anagrafica assicurato2;
 }

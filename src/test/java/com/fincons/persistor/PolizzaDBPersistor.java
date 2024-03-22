@@ -16,13 +16,13 @@ public class PolizzaDBPersistor {
     @Autowired
     private AnagraficaDBPersistor anagraficaDBPersistor;
 
-    public void inserisciPolizze(List<PolizzaDb> listaPolizze) {
+    public void inserisciPolizze(List<PolizzaDb> listaPolizze) throws Exception {
         for (PolizzaDb polizzaDb : listaPolizze) {
             polizzaRepository.insertPolizza(polizzaDb);
         }
     }
 
-    public List<PolizzaDb> inserisciPolizzeMarco() {
+    public List<PolizzaDb> inserisciPolizzeMarco() throws Exception {
         anagraficaDBPersistor.inserisciAnagraficaMarco();
         anagraficaDBPersistor.inserisciAnagraficaMario();
         anagraficaDBPersistor.inserisciAnagraficaSofia();

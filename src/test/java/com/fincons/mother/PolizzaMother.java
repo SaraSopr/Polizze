@@ -10,17 +10,17 @@ import static java.util.Arrays.asList;
 
 public class PolizzaMother {
     public static Polizza getPolizza(String number) {
-        return new Polizza(1, number, getMarco(), getMario(), getSofia());
+        return new Polizza(1, number, getMarco(), getMario(), getSofia(), getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario());
     }
 
     public static List<Polizza> getPolizzeMarco() {
-        return asList(new Polizza(90, "1", getMarco(), getMario(), getSofia()),
-                new Polizza(100, "2", getMarco(), getSofia(), getMario()));
+        return asList(new Polizza(90, "1",getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario(), getSofia(), getLuigi(), getMario()),
+                new Polizza(100, "2", getMarco(), getSofia(), getMario(), getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()));
     }
 
     public static List<Polizza> getPolizzeMarco2() {
-        return asList(new Polizza(90, "1", getMarco(), getMario(), getSofia()),
-                new Polizza(100, "2", getMarco(), getSofia(), getMario()),
-                new Polizza(200, "3", getAntonio(), getMarco(), getLuigi()));
+        return asList(new Polizza(90, "1",getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario(), getSofia(), getLuigi(), getMario()),
+                new Polizza(100, "2", getMarco(), getSofia(), getMario(), getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()),
+                new Polizza(200, "3", getMarco(), getSofia(), getMario(), getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()));
     }
 }

@@ -2,7 +2,6 @@ package com.fincons.usecase;
 
 import com.fincons.db.entity.AnagraficaDB;
 import com.fincons.db.entity.PolizzaDb;
-import com.fincons.dominio.entity.Polizza;
 import com.fincons.mother.PolizzaDBMother;
 import com.fincons.repository.AnagraficaRepository;
 import com.fincons.repository.PolizzaRepository;
@@ -17,11 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static com.fincons.mother.AnagraficaDBMother.*;
-import static com.fincons.mother.AnagraficaMother.getMarco;
 import static com.fincons.mother.PolizzaDBMother.getListaPolizzeDiMarco;
-import static com.fincons.mother.PolizzaDBMother.getListaPolizzeDiMarco2;
-import static com.fincons.mother.PolizzaMother.getPolizzeMarco;
-import static com.fincons.mother.PolizzaMother.getPolizzeMarco2;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
@@ -38,7 +33,7 @@ class PolizzaUseCaseTest {
     @Test
     void getIdContraente() {
 
-        PolizzaDb polizzaDb = PolizzaDBMother.getPolizza("111");
+        PolizzaDb polizzaDb = PolizzaDBMother.getPolizza(2, "111");
         when(polizzaRepository.findByNumeroPolizza("111")).thenReturn(polizzaDb);
 
         int actual = polizzaUseCase.getIdContraente("111");
@@ -80,6 +75,7 @@ class PolizzaUseCaseTest {
     @Test
     @Disabled
     void getPolizzeByCFAndReturnListOfPolizza2() {
+
     }
     }
 //        when(anagraficaRepository.findIdAnagraficaByCF("marco")).thenReturn(getAnagraficaMarco());

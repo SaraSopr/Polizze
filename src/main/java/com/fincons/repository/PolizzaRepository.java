@@ -1,6 +1,7 @@
 package com.fincons.repository;
 
 import com.fincons.db.entity.PolizzaDb;
+import com.fincons.usecase.PolizzaUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.stereotype.Repository;
@@ -30,24 +31,25 @@ public class PolizzaRepository {
                                 rs.getString("CONTRAENTEUGUALEASSICURATO"),
                                 rs.getInt("ID_ASSICURATO1"),
                                 rs.getInt("ID_ASSICURATO2"),
-                                rs.getInt("ID_BENEFICIARIOVITA1"),
-                                rs.getInt("ID_BENEFICIARIOVITA2"),
-                                rs.getInt("ID_BENEFICIARIOVITA3"),
-                                rs.getInt("ID_BENEFICIARIOVITA4"),
-                                rs.getInt("ID_BENEFICIARIOVITA5"),
-                                rs.getInt("ID_BENEFICIARIOMORTE1"),
-                                rs.getInt("ID_BENEFICIARIOMORTE2"),
-                                rs.getInt("ID_BENEFICIARIOMORTE3"),
-                                rs.getInt("ID_BENEFICIARIOMORTE4"),
-                                rs.getInt("ID_BENEFICIARIOMORTE5"),
+                                rs.getInt("IDBENEFICIARIOVITA1"),
+                                rs.getInt("IDBENEFICIARIOVITA2"),
+                                rs.getInt("IDBENEFICIARIOVITA3"),
+                                rs.getInt("IDBENEFICIARIOVITA4"),
+                                rs.getInt("IDBENEFICIARIOVITA5"),
+                                rs.getInt("IDBENEFICIARIOMORTE1"),
+                                rs.getInt("IDBENEFICIARIOMORTE2"),
+                                rs.getInt("IDBENEFICIARIOMORTE3"),
+                                rs.getInt("IDBENEFICIARIOMORTE4"),
+                                rs.getInt("IDBENEFICIARIOMORTE5"),
                                 rs.getInt("ID_FONDO"),
                                 rs.getInt("ID_PRODOTTO")
                         )
         );
     }
 
-    public void insertPolizza(PolizzaDb polizza) {
-        jdbcTemplate.update("INSERT INTO polizza (id, numero_polizza, id_contraente,contraenteugualeassicurato,id_assicurato1,id_assicurato2,id_beneficiariovita1,id_beneficiariovita2,id_beneficiariovita3,id_beneficiariovita4,id_beneficiariovita5,id_beneficiariomorte1,id_beneficiariomorte2,id_beneficiariomorte3,id_beneficiariomorte4,id_beneficiariomorte5,id_fondo,id_prodotto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    public void insertPolizza(PolizzaDb polizza) throws Exception {
+        PolizzaUseCase.checkRispettoRequisiti(polizza);
+        jdbcTemplate.update("INSERT INTO polizza (id, numero_polizza, id_contraente,contraenteugualeassicurato,id_assicurato1,id_assicurato2,idbeneficiariovita1,idbeneficiariovita2,idbeneficiariovita3,idbeneficiariovita4,idbeneficiariovita5,idbeneficiariomorte1,idbeneficiariomorte2,idbeneficiariomorte3,idbeneficiariomorte4,idbeneficiariomorte5,id_fondo,id_prodotto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 polizza.getId(),
                 polizza.getNumeroPolizza(),
                 polizza.getIdContraente(),
@@ -80,27 +82,28 @@ public class PolizzaRepository {
 
 
     public List<PolizzaDb> findPolizzeByIDAnagrafica(int id) {
-        String query = "select * from polizza where ID_CONTRAENTE = '"+id+ "' or ID_ASSICURATO = '"+id + "' or ID_BENEFICIARIO = '" + id+"'";
+        String query = "select * from polizza where ID_CONTRAENTE = '"+id+ "' or ID_ASSICURATO1 = '"+id +"' or ID_ASSICURATO2 = '"+id + "' or IDBENEFICIARIOVITA1 = '" + id+ "' or IDBENEFICIARIOVITA2 = '"+id + "' or IDBENEFICIARIOVITA3 = '"+id + "' or IDBENEFICIARIOVITA4 = '"+id + "' or IDBENEFICIARIOVITA5 = '"+id + "' or IDBENEFICIARIOMORTE1 = '"+id + "' or IDBENEFICIARIOMORTE2 = '"+id + "' or IDBENEFICIARIOMORTE3 = '"+id + "' or IDBENEFICIARIOMORTE4 = '"+id + "' or IDBENEFICIARIOMORTE5 = '"+id + "'";
         return jdbcTemplate.query(query, (rs, rowNum) -> new PolizzaDb(
-                rs.getInt("ID"),
-                rs.getString("NUMERO_POLIZZA"),
-                rs.getInt("ID_CONTRAENTE"),
-                rs.getString("CONTRAENTEUGUALEASSICURATO"),
-                rs.getInt("ID_ASSICURATO1"),
-                rs.getInt("ID_ASSICURATO2"),
-                rs.getInt("ID_BENEFICIARIOVITA1"),
-                rs.getInt("ID_BENEFICIARIOVITA2"),
-                rs.getInt("ID_BENEFICIARIOVITA3"),
-                rs.getInt("ID_BENEFICIARIOVITA4"),
-                rs.getInt("ID_BENEFICIARIOVITA5"),
-                rs.getInt("ID_BENEFICIARIOMORTE1"),
-                rs.getInt("ID_BENEFICIARIOMORTE2"),
-                rs.getInt("ID_BENEFICIARIOMORTE3"),
-                rs.getInt("ID_BENEFICIARIOMORTE4"),
-                rs.getInt("ID_BENEFICIARIOMORTE5"),
-                rs.getInt("ID_FONDO"),
-                rs.getInt("ID_PRODOTTO")
-        ));
+                        rs.getInt("ID"),
+                        rs.getString("NUMERO_POLIZZA"),
+                        rs.getInt("ID_CONTRAENTE"),
+                        rs.getString("CONTRAENTEUGUALEASSICURATO"),
+                        rs.getInt("ID_ASSICURATO1"),
+                        rs.getInt("ID_ASSICURATO2"),
+                        rs.getInt("IDBENEFICIARIOVITA1"),
+                        rs.getInt("IDBENEFICIARIOVITA2"),
+                        rs.getInt("IDBENEFICIARIOVITA3"),
+                        rs.getInt("IDBENEFICIARIOVITA4"),
+                        rs.getInt("IDBENEFICIARIOVITA5"),
+                        rs.getInt("IDBENEFICIARIOMORTE1"),
+                        rs.getInt("IDBENEFICIARIOMORTE2"),
+                        rs.getInt("IDBENEFICIARIOMORTE3"),
+                        rs.getInt("IDBENEFICIARIOMORTE4"),
+                        rs.getInt("IDBENEFICIARIOMORTE5"),
+                        rs.getInt("ID_FONDO"),
+                        rs.getInt("ID_PRODOTTO")
+                )
+        );
     }
 
 //    public List<Pol> findPolizzeBy(int id) {

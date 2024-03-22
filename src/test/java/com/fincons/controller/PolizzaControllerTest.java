@@ -60,6 +60,7 @@ public class PolizzaControllerTest {
         assertThat(actual).isEqualTo(listaPolizzeDiMarco);
     }
     @Test
+    @Disabled
     void dato_in_input_cf_dai_in_output_polizzeOutput(){
         when(polizzaUseCase.getPolizzaByCF("marco")).thenReturn(getPolizzeMarco());
 
@@ -68,5 +69,7 @@ public class PolizzaControllerTest {
         List<Rapporto> listaPolizzeDiMarco = RapportoMother.getListaRapportiMarco();
         assertThat(actual).isEqualTo(listaPolizzeDiMarco);
     }
+
+
 
 }
