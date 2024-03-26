@@ -30,13 +30,6 @@ public class PolizzaController {
         return idContraenteInStringa;
     }
 
-    @GetMapping("/getContraente1/{numeroPolizza}")
-    public Pippo getIdContraente1(@PathVariable int numeroPolizza) {
-        String numeroPolizzaInStringa = String.valueOf(numeroPolizza);
-        int idContraente = polizzaUseCase.getIdContraente(numeroPolizzaInStringa);
-        String idContraenteInStringa = String.valueOf(idContraente);
-        return new Pippo("lol",idContraenteInStringa);
-    }
 
     @GetMapping("/getPolizze/{codiceFiscale}")
     public List<PolizzaDb> getPolizzeByCF(@PathVariable String codiceFiscale) {
@@ -101,11 +94,4 @@ public class PolizzaController {
     }
 
 
-    @AllArgsConstructor
-    @NoArgsConstructor
-    @Data
-    public static class Pippo {
-        String aaa ;
-        String idContraente;
-    }
 }

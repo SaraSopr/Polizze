@@ -9,7 +9,7 @@ import static java.util.Arrays.asList;
 
 public class PolizzaDBMother {
     public static PolizzaDb getPolizza(int id, String number) {
-        return new PolizzaDb(id, number, 1, "N", 3, 4, 5, 6, 5, 6, 7,8, 3, 666, 2, 2, 0, 0);
+        return new PolizzaDb(id, number, 1, "N", 3, 4, 5, 6, null, null, null,null, null, null, null, null, 0, 0);
     }
 
     public static List<PolizzaDb> getListaPolizzeDiMarco() {

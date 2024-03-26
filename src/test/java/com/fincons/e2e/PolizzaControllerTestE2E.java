@@ -39,23 +39,7 @@ public class PolizzaControllerTestE2E {
     @Autowired
     AnagraficaDBPersistor anagraficaDBPersistor;
 
-    @Test
-    @Disabled
-    void happyPath() throws Exception {
-        PolizzaDb polizza = getPolizza(1, "999");
-        polizzaPersistor.inserisciPolizze(asList(polizza));
 
-        MvcResult mvcResult = this.mockMvc.perform(get("/polizza/getContraente1/" + polizza.getNumeroPolizza()))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andReturn();
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        PolizzaController.Pippo actual = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), PolizzaController.Pippo.class);
-
-        PolizzaController.Pippo expected = new PolizzaController.Pippo("lol", valueOf(polizza.getIdContraente()));
-        assertThat(actual).isEqualTo(expected);
-    }
 
 
 

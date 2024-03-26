@@ -24,10 +24,10 @@ class PolizzaRepositoryTest {
     private AnagraficaRepository anagraficaRepository;
 
     @Test
-    void findAll() {
-//        polizzaRepository.insertPolizza(PolizzaDBMother.getPolizza(1, "3"));
-//        List<PolizzaDb> actual = polizzaRepository.findAll();
-//        assertThat(actual.size()).isEqualTo(1);
+    void findAll() throws Exception {
+        polizzaRepository.insertPolizza(PolizzaDBMother.getPolizza(1, "3"));
+        List<PolizzaDb> actual = polizzaRepository.findAll();
+        assertThat(actual.size()).isEqualTo(1);
     }
 
 
