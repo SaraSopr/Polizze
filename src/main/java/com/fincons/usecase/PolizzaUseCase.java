@@ -90,28 +90,76 @@ public class PolizzaUseCase {
     }
 
    private Polizza map(PolizzaDb polizzaDb, HashMap<Integer, Anagrafica> mappaAnagrafica) {
-        return null;
-   }
-//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdContraente())) {
-//            Anagrafica contraente = getAnagrafica(polizzaDb.getIdContraente());
-//            mappaAnagrafica.put(polizzaDb.getIdContraente(), contraente);
-//        }
-//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita1())) {
-//            Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiario());
-//            mappaAnagrafica.put(polizzaDb.getIdBeneficiario(), beneficiario);
-//        }
-//        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdAssicurato())) {
-//            Anagrafica assicurato = getAnagrafica(polizzaDb.getIdAssicurato());
-//            mappaAnagrafica.put(polizzaDb.getIdAssicurato(), assicurato);
-//        }
-//        return new Polizza(
-//                polizzaDb.getId(),
-//                polizzaDb.getNumeroPolizza(),
-//                mappaAnagrafica.get(polizzaDb.getIdContraente()),
-//                mappaAnagrafica.get(polizzaDb.getIdBeneficiario()),
-//                mappaAnagrafica.get(polizzaDb.getIdAssicurato())
-//        );
-//    }
+        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdContraente())) {
+            Anagrafica contraente = getAnagrafica(polizzaDb.getIdContraente());
+            mappaAnagrafica.put(polizzaDb.getIdContraente(), contraente);
+        }
+        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita1())) {
+            Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioVita1());
+            mappaAnagrafica.put(polizzaDb.getIdBeneficiarioVita1(), beneficiario);
+        }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita2())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioVita2());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioVita2(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita3())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioVita3());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioVita3(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita4())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioVita4());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioVita4(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioVita5())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioVita5());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioVita5(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioMorte1())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioMorte1());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioMorte1(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioMorte2())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioMorte2());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioMorte2(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioMorte3())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioMorte3());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioMorte3(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioMorte4())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioMorte4());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioMorte4(), beneficiario);
+       }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdBeneficiarioMorte5())) {
+           Anagrafica beneficiario = getAnagrafica(polizzaDb.getIdBeneficiarioMorte5());
+           mappaAnagrafica.put(polizzaDb.getIdBeneficiarioMorte5(), beneficiario);
+       }
+        if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdAssicurato1())) {
+            Anagrafica assicurato = getAnagrafica(polizzaDb.getIdAssicurato1());
+            mappaAnagrafica.put(polizzaDb.getIdAssicurato1(), assicurato);
+        }
+       if(anagraficaGiaPresente(mappaAnagrafica, polizzaDb.getIdAssicurato2())) {
+           Anagrafica assicurato = getAnagrafica(polizzaDb.getIdAssicurato2());
+           mappaAnagrafica.put(polizzaDb.getIdAssicurato2(), assicurato);
+       }
+        return new Polizza(
+                polizzaDb.getId(),
+                polizzaDb.getNumeroPolizza(),
+                mappaAnagrafica.get(polizzaDb.getIdContraente()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioVita1()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioVita2()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioVita3()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioVita4()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioVita5()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioMorte1()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioMorte2()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioMorte3()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioMorte4()),
+                mappaAnagrafica.get(polizzaDb.getIdBeneficiarioMorte5()),
+                mappaAnagrafica.get(polizzaDb.getIdAssicurato1()),
+                mappaAnagrafica.get(polizzaDb.getIdAssicurato2())
+        );
+    }
 
     private static boolean anagraficaGiaPresente(HashMap<Integer, Anagrafica> map, int polizzaDb) {
         return !map.containsKey(polizzaDb);

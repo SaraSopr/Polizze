@@ -14,8 +14,8 @@ public class PolizzaMother {
     }
 
     public static List<Polizza> getPolizzeMarco() {
-        return asList(new Polizza(90, "1",getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario(), getSofia(), getLuigi(), getMario()),
-                new Polizza(100, "2", getMarco(), getSofia(), getMario(), getMario(), getLuigi(), getAntonio(), getMario(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()));
+        return asList(new Polizza(90, "1",getSofia(), getSofia(), getMario(), getAntonio(), getMarco(), getAntonio(), getMarco(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()),
+                new Polizza(100, "2", getSofia(), getSofia(), getMario(), getAntonio(), getMarco(), getAntonio(), getMarco(), getMario(), getMarco(), getSofia(), getSofia(), getLuigi(), getMario()));
     }
 
     public static List<Polizza> getPolizzeMarco2() {
